@@ -1,0 +1,46 @@
+.wrapper {
+  background-color: rgb(50, 90, 122);
+  margin: 25px 0px;
+  border-radius: 50px;
+  display: grid;
+  grid-template-areas:
+    'i n c p'
+    'i r s f';
+  grid-template-columns: 5fr 2fr 2fr 2fr;
+
+  width: 98vw;
+  max-height: 300px;
+  align-items: center;
+}
+
+.name {
+  grid-area: n;
+}
+
+.region {
+  grid-area: r;
+}
+
+.calories {
+  grid-area: c;
+}
+
+.sugars {
+  grid-area: s;
+}
+
+.protein {
+  grid-area: p;
+}
+
+.fat {
+  grid-area: f;
+}
+
+.image {
+  padding: 10px;
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 50px;
+  grid-area: i;
+}

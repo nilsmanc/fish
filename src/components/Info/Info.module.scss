@@ -1,0 +1,32 @@
+.wrapper {
+  display: grid;
+  grid-template-areas:
+    'i b q p'
+    'i b r h';
+}
+
+.image {
+  max-width: 500px;
+  max-height: 500px;
+  grid-area: i;
+}
+
+.population {
+  grid-area: p;
+}
+
+.quote {
+  grid-area: q;
+}
+
+.rate {
+  grid-area: r;
+}
+
+.habitat {
+  grid-area: h;
+}
+
+.biology {
+  grid-area: b;
+}

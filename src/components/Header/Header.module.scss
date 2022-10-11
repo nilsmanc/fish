@@ -1,0 +1,25 @@
+.wrapper {
+  display: grid;
+  grid-template-areas: 'i s b';
+  grid-template-columns: 22fr 3fr 3fr;
+  background-color: rgb(115, 175, 209);
+  align-items: center;
+}
+
+.image {
+  width: 100px;
+  grid-area: i;
+  padding-left: 20px;
+}
+
+.search {
+  grid-area: s;
+  height: 20px;
+  width: 350px;
+}
+
+.button {
+  grid-area: b;
+  width: 100px;
+  height: 25px;
+}
