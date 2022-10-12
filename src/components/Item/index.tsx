@@ -7,19 +7,17 @@ interface ItemProps {
 
 export const Item: React.FC<ItemProps> = ({ data }) => {
   const navigate = useNavigate()
-  console.log(data)
   return (
     <div>
       {data
         .filter((block: any) => block['Image Gallery'] && block['Species Name'] !== 'Sugar Kelp')
         .map((item: any) => {
           return (
-            <div className={styles.wrapper} key={item['Biology']}>
-              <img
-                onClick={() => navigate(`/${item['Path'].replace('/profiles/', '')}`)}
-                className={styles.image}
-                src={item['Species Illustration Photo']?.src}
-              />
+            <div
+              onClick={() => navigate(`/${item['Path'].replace('/profiles/', '')}`)}
+              className={styles.wrapper}
+              key={item['Biology']}>
+              <img className={styles.image} src={item['Species Illustration Photo']?.src} />
               <div className={styles.name}>
                 <b>Name:</b> <span>{item['Species Name']}</span>
               </div>

@@ -1,15 +1,26 @@
 .wrapper {
   display: grid;
-  grid-template-areas: 'i s b';
-  grid-template-columns: 22fr 3fr 3fr;
-  background-color: rgb(115, 175, 209);
+  grid-template-areas: 'i t s b';
+  grid-template-columns: 1fr 10fr 2fr 2fr;
+  background-color: rgb(34, 62, 116);
   align-items: center;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  height: 200px;
 }
 
 .image {
-  width: 100px;
+  width: 160px;
   grid-area: i;
-  padding-left: 20px;
+  padding-left: 50px;
+  cursor: pointer;
+}
+
+.title {
+  grid-area: t;
+  font-size: 50px;
+  font-weight: 400;
+  cursor: pointer;
 }
 
 .search {

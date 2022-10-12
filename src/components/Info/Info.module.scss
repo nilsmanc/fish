@@ -1,32 +1,43 @@
 .wrapper {
   display: grid;
   grid-template-areas:
-    'i b q p'
-    'i b r h';
+    'n q q'
+    'i t t'
+    'i nu nu';
+  grid-template-columns: 800px 3fr 3fr;
+  grid-template-rows: 100px 1fr;
+  grid-gap: 20px;
+  font-family: 'Roboto', sans-serif;
+  padding: 50px;
+  font-size: 25px;
 }
 
-.image {
-  max-width: 500px;
-  max-height: 500px;
-  grid-area: i;
-}
-
-.population {
-  grid-area: p;
+.name {
+  grid-area: n;
+  font-size: 50px;
+  font-weight: bold;
 }
 
 .quote {
   grid-area: q;
 }
 
-.rate {
-  grid-area: r;
+.image {
+  width: 800px;
+  height: 600px;
+  grid-area: i;
+  margin: 0 auto;
 }
 
-.habitat {
-  grid-area: h;
+.text {
+  grid-area: t;
 }
 
-.biology {
-  grid-area: b;
+.nutrion {
+  grid-area: nu;
+}
+
+.carousel {
+  width: 500px;
+  height: 500px;
 }
