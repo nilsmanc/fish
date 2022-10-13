@@ -1,23 +1,37 @@
-import { Button, Paper } from '@mui/material'
+import { Paper } from '@mui/material'
 import Carousel from 'react-material-ui-carousel'
+import { NutrionTable } from '../NutrionTable'
 import styles from './Info.module.scss'
+import { useParams } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useAppDispatch } from '../../redux/store'
+import { fetchFish } from '../../redux/fish/asyncActions'
+import { useSelector } from 'react-redux'
+import { selectFish } from '../../redux/fish/selectors'
 
-interface InfoProps {
-  fish: Array<any>
-}
+export const Info: React.FC = () => {
+  const dispatch = useAppDispatch()
+  const { name } = useParams()
+  const fish = useSelector(selectFish)
+  console.log(fish[0])
+  const route = '/' + name
+  const getOneFish = async () => {
+    dispatch(fetchFish(route))
+  }
 
-export const Info: React.FC<InfoProps> = ({ fish }) => {
+  useEffect(() => {
+    getOneFish()
+  }, [])
+
   const cleanText = (propName: string) => {
     return fish[0]?.[propName].replace(/<\/?[^>]+(>|$)/g, '')
   }
-
   let photos = [
     <img className={styles.image} src={fish[0]?.['Image Gallery']?.[0]?.src} />,
     <img className={styles.image} src={fish[0]?.['Image Gallery']?.[1]?.src} />,
     <img className={styles.image} src={fish[0]?.['Image Gallery']?.[2]?.src} />,
     <img className={styles.image} src={fish[0]?.['Image Gallery']?.[3]?.src} />,
   ]
-
   let items = [
     {
       name: photos[0],
@@ -33,7 +47,6 @@ export const Info: React.FC<InfoProps> = ({ fish }) => {
     },
   ]
 
-  console.log(fish)
   return (
     <div className={styles.wrapper}>
       <span className={styles.name}>{fish[0]?.['Species Name']}</span>
@@ -43,7 +56,7 @@ export const Info: React.FC<InfoProps> = ({ fish }) => {
           <TestItem key={i} item={item} />
         ))}
       </Carousel>
-
+      {/* <NutrionTable fish={fish[0]} /> */}
       <div className={styles.text}>
         <p>
           <b>Biology:</b>
@@ -51,9 +64,7 @@ export const Info: React.FC<InfoProps> = ({ fish }) => {
         <span>{cleanText('Location')}</span>
         <span>{cleanText('Physical Description')}</span>
         <span>{cleanText('Biology')}</span>
-        <span>{cleanText('Population Status')}</span>
       </div>
-
       <div className={styles.nutrion}>
         <p>
           <b>Nutritional Value:</b>
@@ -65,7 +76,6 @@ export const Info: React.FC<InfoProps> = ({ fish }) => {
     </div>
   )
 }
-
 export const TestItem = (props: any) => {
   return (
     <Paper>

@@ -1,13 +1,9 @@
 import { Item } from '../../components/Item'
 
-interface MainPropsType {
-  data: Array<{}>
-}
-
-export const HomePage: React.FC<MainPropsType> = ({ data }) => {
+export const HomePage: React.FC = () => {
   return (
     <div>
-      <Item data={data} />
+      <Item />
     </div>
   )
 }
