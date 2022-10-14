@@ -6,11 +6,11 @@
   align-items: center;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
-  height: 200px;
+  height: 140px;
 }
 
 .image {
-  width: 160px;
+  width: 120px;
   grid-area: i;
   padding-left: 50px;
   cursor: pointer;
@@ -18,7 +18,7 @@
 
 .title {
   grid-area: t;
-  font-size: 50px;
+  font-size: 30px;
   font-weight: 400;
   cursor: pointer;
 }

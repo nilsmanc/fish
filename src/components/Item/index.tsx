@@ -19,6 +19,11 @@ export const Item: React.FC = () => {
     dispatch(fetchFish())
   }
 
+  const onHandleClick = (item: any) => {
+    navigate(`/${item['Path'].replace('/profiles/', '')}`)
+
+    window.scrollTo(0, 0)
+  }
   const skeletons = [...new Array(3)].map((_, index) => <Skeleton key={index} />)
 
   useEffect(() => {
@@ -35,31 +40,17 @@ export const Item: React.FC = () => {
             .map((item: any) => {
               return (
                 <div
-                  onClick={() => navigate(`/${item['Path'].replace('/profiles/', '')}`)}
+                  onClick={() => onHandleClick(item)}
                   className={styles.wrapper}
                   key={item['Biology']}>
                   <img className={styles.image} src={item['Species Illustration Photo']?.src} />
                   <div className={styles.name}>
-                    <b>Name:</b> <span>{item['Species Name']}</span>
+                    <span>{item['Species Name']}</span>
                   </div>
-                  <div className={styles.region}>
-                    <b>Region:</b> <span>{item['NOAA Fisheries Region']}</span>
+
+                  <div className={styles.table}>
+                    <NutrionTable fish={item} />
                   </div>
-                  <div className={styles.calories}>
-                    <b>Calories:</b> <span>{item['Calories']}</span>
-                  </div>
-                  <div className={styles.sugars}>
-                    <b>Sugars:</b>
-                    <span>{item['Sugars, Total']}</span>
-                  </div>
-                  <div className={styles.protein}>
-                    <b>Protein: </b>
-                    <span>{item['Protein']}</span>
-                  </div>
-                  <div className={styles.fat}>
-                    <b> Fat:</b> <span>{item['Fat, Total']}</span>
-                  </div>
-                  <NutrionTable fish={item} />
                 </div>
               )
             })}

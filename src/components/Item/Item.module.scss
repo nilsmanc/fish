@@ -4,16 +4,17 @@
   border-radius: 20px;
   display: grid;
   grid-template-areas:
-    'i n c p'
-    'i r s f';
-  grid-template-columns: 3fr 2fr 2fr 2fr;
+    'i t'
+    'n t';
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 50px;
   grid-gap: 10px;
 
   width: 95vw;
-  height: 300px;
+  height: 250px;
   align-items: center;
   margin-left: 2vw;
-  font-size: 30px;
+  font-size: 20px;
 
   cursor: pointer;
   &:hover {
@@ -23,32 +24,18 @@
 
 .name {
   grid-area: n;
+  font-size: 20px;
+  padding: 0 0 20px 110px;
 }
 
-.region {
-  grid-area: r;
+.table {
+  grid-area: t;
+  padding-right: 50px;
 }
-
-.calories {
-  grid-area: c;
-}
-
-.sugars {
-  grid-area: s;
-}
-
-.protein {
-  grid-area: p;
-}
-
-.fat {
-  grid-area: f;
-}
-
 .image {
   padding-left: 70px;
-  max-width: 400px;
-  max-height: 250px;
+  max-width: 200px;
+  max-height: 150px;
   border-radius: 20px;
   grid-area: i;
 }

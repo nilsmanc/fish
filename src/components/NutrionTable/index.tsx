@@ -1,45 +1,60 @@
-import Table from '@mui/material/Table'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import TableContainer from '@mui/material/TableContainer'
-import TableHead from '@mui/material/TableHead'
-import TableRow from '@mui/material/TableRow'
-import Paper from '@mui/material/Paper'
+import { DataGrid, GridColDef } from '@mui/x-data-grid'
 
 interface NutrionTableProps {
   fish: any
 }
+const columns: GridColDef[] = [
+  { field: 'calories', headerName: 'Calories', width: 110 },
+  {
+    field: 'protein',
+    headerName: 'Protein',
+    width: 110,
+  },
+  { field: 'fat', headerName: 'Fat', width: 110 },
+  {
+    field: 'sugars',
+    headerName: 'Sugars',
+    width: 110,
+  },
+  {
+    field: 'cholesterol',
+    headerName: 'Cholesterol',
+    width: 110,
+  },
+  {
+    field: 'sodium',
+    headerName: 'Sodium',
+    width: 110,
+  },
+]
 
 export const NutrionTable: React.FC<NutrionTableProps> = ({ fish }) => {
-  const createData = (calories: string, fat: string, sugars: string, protein: string) => {
-    return { calories, fat, sugars, protein }
-  }
-
   const rows = [
-    createData(fish['Calories'], fish['Fat, Total'], fish['Sugars, Total'], fish['Protein']),
+    {
+      id: 1,
+      calories: fish['Calories'],
+      protein: fish['Protein'],
+      fat: fish['Fat, Total'],
+      sugars: fish['Sugars, Total'],
+      cholesterol: fish['Cholesterol'],
+      sodium: fish['Sodium'],
+    },
   ]
+
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label='simple table'>
-        <TableHead>
-          <TableRow>
-            <TableCell align='right'>Calories</TableCell>
-            <TableCell align='right'>Fat&nbsp;(g)</TableCell>
-            <TableCell align='right'>Sugars&nbsp;(g)</TableCell>
-            <TableCell align='right'>Protein&nbsp;(g)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row, index) => (
-            <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-              <TableCell align='right'>{row.calories}</TableCell>
-              <TableCell align='right'>{row.fat}</TableCell>
-              <TableCell align='right'>{row.sugars}</TableCell>
-              <TableCell align='right'>{row.protein}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <div style={{ height: 110 }}>
+      <DataGrid
+        disableColumnFilter={true}
+        disableColumnMenu={true}
+        disableColumnSelector={true}
+        disableDensitySelector={true}
+        disableIgnoreModificationsIfProcessingProps={true}
+        disableSelectionOnClick={true}
+        disableVirtualization={true}
+        hideFooter={true}
+        rows={rows}
+        columns={columns}
+      />
+    </div>
   )
 }

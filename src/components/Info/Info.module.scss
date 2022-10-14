@@ -1,20 +1,19 @@
 .wrapper {
   display: grid;
   grid-template-areas:
-    'n q q'
-    'i t t'
-    'i nu nu';
-  grid-template-columns: 800px 3fr 3fr;
-  grid-template-rows: 100px 1fr;
-  grid-gap: 40px;
+    'n q'
+    'i t';
+  grid-template-columns: 800px 3fr;
+  grid-template-rows: 60px 500px;
+  grid-gap: 20px;
   font-family: 'Roboto', sans-serif;
   padding: 50px;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .name {
   grid-area: n;
-  font-size: 50px;
+  font-size: 30px;
   font-weight: bold;
 }
 

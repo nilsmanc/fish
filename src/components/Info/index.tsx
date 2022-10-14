@@ -1,6 +1,5 @@
 import { Paper } from '@mui/material'
 import Carousel from 'react-material-ui-carousel'
-import { NutrionTable } from '../NutrionTable'
 import styles from './Info.module.scss'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
@@ -13,7 +12,6 @@ export const Info: React.FC = () => {
   const dispatch = useAppDispatch()
   const { name } = useParams()
   const fish = useSelector(selectFish)
-  console.log(fish[0])
   const route = '/' + name
   const getOneFish = async () => {
     dispatch(fetchFish(route))
@@ -46,17 +44,17 @@ export const Info: React.FC = () => {
       name: photos[3],
     },
   ]
-
+  console.log(fish)
   return (
     <div className={styles.wrapper}>
       <span className={styles.name}>{fish[0]?.['Species Name']}</span>
       <q className={styles.quote}>{fish[0]?.['Quote']}</q>
       <Carousel stopAutoPlayOnHover={true} animation='slide' duration={1000} swipe={false}>
         {items.map((item, i) => (
-          <TestItem key={i} item={item} />
+          <Item key={i} item={item} />
         ))}
       </Carousel>
-      {/* <NutrionTable fish={fish[0]} /> */}
+
       <div className={styles.text}>
         <p>
           <b>Biology:</b>
@@ -64,19 +62,18 @@ export const Info: React.FC = () => {
         <span>{cleanText('Location')}</span>
         <span>{cleanText('Physical Description')}</span>
         <span>{cleanText('Biology')}</span>
-      </div>
-      <div className={styles.nutrion}>
+        <hr />
         <p>
           <b>Nutritional Value:</b>
         </p>
-        <span>{cleanText('Health Benefits')}</span>
+        {fish[0]?.['Health Benefits'] ? <span>{cleanText('Health Benefits')}</span> : ''}
         <span>{cleanText('Taste')}</span>
         <span>{cleanText('Texture')}</span>
       </div>
     </div>
   )
 }
-export const TestItem = (props: any) => {
+export const Item = (props: any) => {
   return (
     <Paper>
       <h2>{props.item.name}</h2>
