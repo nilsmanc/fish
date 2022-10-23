@@ -15,7 +15,12 @@ export const Pagination: React.FC<PaginationProps> = ({ fishPerPage, totalFish, 
   return (
     <div>
       {pageNumbers.map((number) => (
-        <Button key={number} variant='contained' onClick={() => paginate(number)}>
+        <Button
+          key={number}
+          color='inherit'
+          variant='text'
+          size='large'
+          onClick={() => paginate(number)}>
           {number}
         </Button>
       ))}

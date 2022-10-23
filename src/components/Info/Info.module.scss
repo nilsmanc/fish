@@ -1,14 +1,14 @@
 .wrapper {
   display: grid;
   grid-template-areas:
-    'n q'
-    'i t';
-  grid-template-columns: 800px 3fr;
-  grid-template-rows: 60px 500px;
+    'n q q'
+    'i b v';
+  grid-template-columns: 600px 3fr 3fr;
+  grid-template-rows: 1fr 200px;
   grid-gap: 20px;
-  font-family: 'Roboto', sans-serif;
   padding: 50px;
   font-size: 20px;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 .name {
@@ -19,24 +19,37 @@
 
 .quote {
   grid-area: q;
+  text-align: justify;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgb(59, 59, 95);
 }
 
 .image {
-  width: 800px;
-  height: 600px;
+  width: 500px;
+  height: 350px;
   grid-area: i;
-  margin: 0 auto;
-}
-
-.text {
-  grid-area: t;
-}
-
-.nutrion {
-  grid-area: nu;
 }
 
 .carousel {
   width: 500px;
-  height: 500px;
+  height: 350px;
+  border-radius: 50px;
+  border: 3px solid rgb(59, 59, 95);
+}
+
+.biology {
+  grid-area: b;
+  text-align: justify;
+  padding-right: 30px;
+  border-right: 2px solid rgb(59, 59, 95);
+}
+
+.value {
+  grid-area: v;
+  text-align: justify;
+}
+
+.illustration {
+  width: 500px;
+  height: 270px;
 }

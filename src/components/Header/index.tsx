@@ -13,9 +13,16 @@ export const Header: React.FC = () => {
       <div onClick={handleOnClick}>
         <img className={styles.image} alt='logo' src='logo.png' />
       </div>
-      <span className={styles.title}>NOAA FishWatch</span>
+      <span onClick={handleOnClick} className={styles.title}>
+        NOAA FishWatch
+      </span>
+      <div className={styles.buttons}>
+        <span className={styles.fbutton}>Sustainable Seafood</span>
+        <span className={styles.fbutton}>About</span>
+        <span className={styles.fbutton}>Global</span>
+      </div>
       <Input className={styles.search}></Input>
-      <Button size='large' className={styles.button}>
+      <Button color='inherit' size='large' className={styles.button}>
         Search
       </Button>
     </div>

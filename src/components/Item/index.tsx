@@ -29,12 +29,15 @@ export const Item: React.FC = () => {
   const skeletons = [...new Array(3)].map((_, index) => <Skeleton key={index} />)
 
   useEffect(() => {
-    getFish()
+    try {
+      getFish()
+    } catch (err) {
+      alert(err)
+    }
   }, [])
 
   const [currentPage, setCurrentPage] = useState(1)
   const [fishPerPage] = useState(6)
-
   const lastFishIndex = currentPage * fishPerPage
   const firstFishIndex = lastFishIndex - fishPerPage
   const currentFish = data.slice(firstFishIndex, lastFishIndex)
@@ -57,7 +60,6 @@ export const Item: React.FC = () => {
                 <div className={styles.name}>
                   <span>{item['Species Name']}</span>
                 </div>
-
                 <div className={styles.table}>
                   <NutrionTable fish={item} />
                 </div>
@@ -65,19 +67,15 @@ export const Item: React.FC = () => {
             )
           })}
       <div className={styles.paginator}>
-        {currentPage !== 1 && (
-          <Button variant='contained' onClick={prevPage}>
-            Prev Page
-          </Button>
-        )}
+        <Button disabled={currentPage == 1} color='inherit' variant='outlined' onClick={prevPage}>
+          Prev Page
+        </Button>
         <div className={styles.pages}>
           <Pagination fishPerPage={fishPerPage} totalFish={data.length} paginate={paginate} />
         </div>
-        {currentPage !== 20 && (
-          <Button variant='contained' onClick={nextPage}>
-            Next Page
-          </Button>
-        )}
+        <Button disabled={currentPage == 20} color='inherit' variant='outlined' onClick={nextPage}>
+          Next Page
+        </Button>
       </div>
     </div>
   )

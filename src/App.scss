@@ -2,3 +2,21 @@
   margin: 0;
   padding: 0;
 }
+
+#root {
+  font-family: 'Fira Sans', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(88, 87, 151);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(134, 149, 184);
+  border: 1px solid rgb(88, 87, 151);
+}
