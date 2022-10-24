@@ -1,19 +1,25 @@
-import { Paper } from '@mui/material'
-import Carousel from 'react-material-ui-carousel'
-import styles from './Info.module.scss'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
-import { useAppDispatch } from '../../redux/store'
-import { fetchFish } from '../../redux/fish/asyncActions'
 import { useSelector } from 'react-redux'
+import { useAppDispatch } from '../../redux/store'
+import Carousel from 'react-material-ui-carousel'
+
+import { fetchFish } from '../../redux/fish/asyncActions'
 import { selectFish } from '../../redux/fish/selectors'
+import { ImageType } from '../types'
+
+import styles from './Info.module.scss'
+import { Paper } from '@mui/material'
 
 export const Info: React.FC = () => {
   const dispatch = useAppDispatch()
-  const { name } = useParams()
   const fish = useSelector(selectFish)
+  const fishItem = fish[0]
+
+  const { name } = useParams()
   const route = '/' + name
-  const getOneFish = async () => {
+
+  const getOneFish = () => {
     dispatch(fetchFish(route))
   }
 
@@ -26,68 +32,55 @@ export const Info: React.FC = () => {
   }, [])
 
   const cleanText = (propName: string) => {
-    return fish[0]?.[propName]?.replace(/<\/?[^>]+(>|$)/g, '').replace(/\&nbsp;/g, ' ')
+    return fishItem?.[propName]
+      ?.replace(/<\/?[^>]+(>|$)/g, '')
+      .replace(/\&nbsp;/g, ' ')
+      .slice(0, 658)
   }
-  let photos = [
-    <img className={styles.image} src={fish[0]?.['Image Gallery']?.[0]?.src} />,
-    <img className={styles.image} src={fish[0]?.['Image Gallery']?.[1]?.src} />,
-    <img className={styles.image} src={fish[0]?.['Image Gallery']?.[2]?.src} />,
-    <img className={styles.image} src={fish[0]?.['Image Gallery']?.[3]?.src} />,
-  ]
-  let items = [
-    {
-      name: photos[0],
-    },
-    {
-      name: photos[1],
-    },
-    {
-      name: photos[2],
-    },
-    {
-      name: photos[3],
-    },
-  ]
-  console.log(fish)
+
+  const images = fishItem?.['Image Gallery']
+  console.log(images)
+
+  const items = images?.map((image: ImageType) => ({
+    name: <img className={styles.image} src={image.src} alt={image.alt} />,
+  }))
 
   return (
     <div className={styles.wrapper}>
-      {!fish[0] ? (
+      {!fishItem ? (
         <div>Loading...</div>
       ) : (
         <>
-          <span className={styles.name}>{fish[0]?.['Species Name']}</span>
-          <q className={styles.quote}>{fish[0]?.['Quote']}</q>
-          {fish[0]?.['Image Gallery'] ? (
+          <span className={styles.name}>{fishItem?.['Species Name']}</span>
+          <q className={styles.quote}>{fishItem?.['Quote']}</q>
+          {fishItem?.['Image Gallery'] ? (
             <Carousel
               className={styles.carousel}
               stopAutoPlayOnHover={true}
               animation='fade'
               duration={1000}
               swipe={false}>
-              {items.map((item, i) => (
+              {items.map((item: React.ReactNode, i: number) => (
                 <Item key={i} item={item} />
               ))}
             </Carousel>
           ) : (
             <img
               className={styles.illustration}
-              src={fish[0]?.['Species Illustration Photo'].src}
+              src={fishItem?.['Species Illustration Photo'].src}
             />
           )}
-
           <div className={styles.biology}>
             <p>
               <b>Biology:</b>
             </p>
-            <span>{cleanText('Location')}</span>
             <span>{cleanText('Physical Description')}</span>
           </div>
           <div className={styles.value}>
             <p>
               <b>Nutritional Value:</b>
             </p>
-            {fish[0]?.['Health Benefits'] ? <span>{cleanText('Health Benefits')}</span> : ''}
+            {fishItem?.['Health Benefits'] ? <span>{cleanText('Health Benefits')}</span> : ''}
             <span>{cleanText('Taste')}</span>
             <span>{cleanText('Texture')}</span>
           </div>
@@ -96,6 +89,7 @@ export const Info: React.FC = () => {
     </div>
   )
 }
+
 export const Item = (props: any) => {
   return (
     <Paper>

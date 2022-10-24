@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
-import { FishParams } from './types'
 
 export const fetchFish = createAsyncThunk<any, any>('fish/fetchFishStatus', async (name) => {
   if (!name) {

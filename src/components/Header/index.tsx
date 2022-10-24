@@ -1,5 +1,6 @@
 import { Button, Input } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+
 import styles from './Header.module.scss'
 
 export const Header: React.FC = () => {

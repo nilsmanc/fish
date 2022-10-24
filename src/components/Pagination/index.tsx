@@ -12,6 +12,7 @@ export const Pagination: React.FC<PaginationProps> = ({ fishPerPage, totalFish, 
   for (let i = 1; i <= Math.ceil(totalFish / fishPerPage); i++) {
     pageNumbers.push(i)
   }
+
   return (
     <div>
       {pageNumbers.map((number) => (

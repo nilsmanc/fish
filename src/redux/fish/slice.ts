@@ -10,11 +10,7 @@ const initialState: FishSliceState = {
 const fishSlice = createSlice({
   name: 'fish',
   initialState,
-  reducers: {
-    setItems(state, action) {
-      state.items = action.payload
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchFish.pending, (state, action) => {
       state.status = Status.LOADING
@@ -31,6 +27,6 @@ const fishSlice = createSlice({
   },
 })
 
-export const { setItems } = fishSlice.actions
+export const {} = fishSlice.actions
 
 export default fishSlice.reducer

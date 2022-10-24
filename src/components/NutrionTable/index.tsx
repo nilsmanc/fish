@@ -1,30 +1,27 @@
 import { DataGrid, GridColDef } from '@mui/x-data-grid'
+import { FishType } from '../types'
 
 interface NutrionTableProps {
-  fish: any
+  fish: FishType
 }
 const columns: GridColDef[] = [
-  { field: 'calories', headerName: 'Calories', width: 110 },
+  { field: 'calories', headerName: 'Calories', width: 140 },
   {
     field: 'protein',
     headerName: 'Protein',
-    width: 110,
+    width: 140,
   },
-  { field: 'fat', headerName: 'Fat', width: 110 },
-  {
-    field: 'sugars',
-    headerName: 'Sugars',
-    width: 110,
-  },
+  { field: 'fat', headerName: 'Fat', width: 140 },
+
   {
     field: 'cholesterol',
     headerName: 'Cholesterol',
-    width: 110,
+    width: 140,
   },
   {
     field: 'sodium',
     headerName: 'Sodium',
-    width: 110,
+    width: 143,
   },
 ]
 
@@ -35,7 +32,6 @@ export const NutrionTable: React.FC<NutrionTableProps> = ({ fish }) => {
       calories: fish['Calories'],
       protein: fish['Protein'],
       fat: fish['Fat, Total'],
-      sugars: fish['Sugars, Total'],
       cholesterol: fish['Cholesterol'],
       sodium: fish['Sodium'],
     },
