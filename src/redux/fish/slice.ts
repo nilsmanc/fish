@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+
 import { fetchFish } from './asyncActions'
 import { FishSliceState, Status } from './types'
 

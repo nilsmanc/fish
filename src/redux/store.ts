@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
+
 import fish from './fish/slice'
 import page from './page/slice'
 

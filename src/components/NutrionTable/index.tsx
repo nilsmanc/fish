@@ -1,5 +1,5 @@
-import { DataGrid, GridColDef } from '@mui/x-data-grid'
 import { FishType } from '../types'
+import { DataGrid, GridColDef } from '@mui/x-data-grid'
 
 interface NutrionTableProps {
   fish: FishType
@@ -50,6 +50,7 @@ export const NutrionTable: React.FC<NutrionTableProps> = ({ fish }) => {
         hideFooter={true}
         rows={rows}
         columns={columns}
+        autoHeight
       />
     </div>
   )

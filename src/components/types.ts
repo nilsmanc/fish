@@ -10,7 +10,7 @@ export type FishType = {
   Cholesterol: string
   ['Fat, Total']: string
   ['Health Benefits']: string
-  ImageGallery: Array<{}>
+  ['Image Gallery']: Array<{}>
   Path: string
   ['Physical Description']: string
   Protein: string

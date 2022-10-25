@@ -18,12 +18,12 @@ export const Header: React.FC = () => {
         NOAA FishWatch
       </span>
       <div className={styles.buttons}>
-        <span className={styles.fbutton}>Sustainable Seafood</span>
-        <span className={styles.fbutton}>About</span>
-        <span className={styles.fbutton}>Global</span>
+        <span className={styles.link}>Sustainable Seafood</span>
+        <span className={styles.link}>About</span>
+        <span className={styles.link}>Global</span>
       </div>
       <Input className={styles.search}></Input>
-      <Button color='inherit' size='large' className={styles.button}>
+      <Button color='inherit' size='small' className={styles.button}>
         Search
       </Button>
     </div>

@@ -5,7 +5,7 @@ export enum Status {
 }
 
 export interface FishSliceState {
-  items: any
+  items: Array<any>
   status: 'loading' | 'success' | 'error'
 }
 

@@ -14,6 +14,7 @@ import { isLoadingFish, selectFish } from '../../redux/fish/selectors'
 import styles from './Item.module.scss'
 import { Button } from '@mui/material'
 import { FishType } from '../types'
+import { ArrowForwardIos, ArrowBackIos } from '@mui/icons-material'
 
 export const Item: React.FC = () => {
   const data = useSelector(selectFish)
@@ -28,8 +29,6 @@ export const Item: React.FC = () => {
   const firstFishIndex = lastFishIndex - fishPerPage
   const currentFish = data.slice(firstFishIndex, lastFishIndex)
 
-  console.log(currentFish)
-
   const paginate = (pageNumber: number) => {
     dispatch(setCurrentPageNumber(pageNumber))
   }
@@ -39,8 +38,7 @@ export const Item: React.FC = () => {
   const skeletons = [...new Array(3)].map((_, index) => <Skeleton key={index} />)
 
   const getFish = () => {
-    //@ts-ignore
-    dispatch(fetchFish())
+    dispatch(fetchFish(''))
   }
 
   const onHandleClick = (item: FishType) => {
@@ -50,11 +48,7 @@ export const Item: React.FC = () => {
   }
 
   useEffect(() => {
-    try {
-      getFish()
-    } catch (err) {
-      alert(err)
-    }
+    getFish()
     dispatch(setCurrentPageNumber(page))
   }, [])
 
@@ -79,15 +73,22 @@ export const Item: React.FC = () => {
             )
           })}
       <div className={styles.paginator}>
-        <Button disabled={page == 1} color='inherit' variant='outlined' onClick={prevPage}>
-          Prev Page
-        </Button>
         <div className={styles.pages}>
           <Pagination fishPerPage={fishPerPage} totalFish={data.length} paginate={paginate} />
         </div>
-        <Button disabled={page == 20} color='inherit' variant='outlined' onClick={nextPage}>
-          Next Page
-        </Button>
+        <div className={styles.turn}>
+          <Button
+            className={styles.prev}
+            disabled={page == 1}
+            color='inherit'
+            variant='text'
+            onClick={prevPage}>
+            <ArrowBackIos />
+          </Button>
+          <Button disabled={page == 20} color='inherit' variant='text' onClick={nextPage}>
+            <ArrowForwardIos />
+          </Button>
+        </div>
       </div>
     </div>
   )

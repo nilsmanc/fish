@@ -32,14 +32,10 @@ export const Info: React.FC = () => {
   }, [])
 
   const cleanText = (propName: string) => {
-    return fishItem?.[propName]
-      ?.replace(/<\/?[^>]+(>|$)/g, '')
-      .replace(/\&nbsp;/g, ' ')
-      .slice(0, 658)
+    return fishItem?.[propName]?.replace(/<\/?[^>]+(>|$)/g, '').replace(/\&nbsp;/g, ' ')
   }
 
   const images = fishItem?.['Image Gallery']
-  console.log(images)
 
   const items = images?.map((image: ImageType) => ({
     name: <img className={styles.image} src={image.src} alt={image.alt} />,
@@ -91,6 +87,7 @@ export const Info: React.FC = () => {
 }
 
 export const Item = (props: any) => {
+  console.log(props)
   return (
     <Paper>
       <h2>{props.item.name}</h2>
