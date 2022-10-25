@@ -5,23 +5,23 @@ interface NutrionTableProps {
   fish: FishType
 }
 const columns: GridColDef[] = [
-  { field: 'calories', headerName: 'Calories', width: 140 },
+  { field: 'calories', headerName: 'Calories', width: 150 },
   {
     field: 'protein',
     headerName: 'Protein',
-    width: 140,
+    width: 150,
   },
-  { field: 'fat', headerName: 'Fat', width: 140 },
+  { field: 'fat', headerName: 'Fat', width: 150 },
 
   {
     field: 'cholesterol',
     headerName: 'Cholesterol',
-    width: 140,
+    width: 150,
   },
   {
     field: 'sodium',
     headerName: 'Sodium',
-    width: 143,
+    width: 145,
   },
 ]
 
