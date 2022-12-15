@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom'
 
 import { Header } from './components/Header'
-import { HomePage } from './pages/Homepage'
-import { Details } from './pages/Details'
+import { Info } from './pages/Info'
+import { List } from './pages/List'
 
 import './App.scss'
 
@@ -11,8 +11,8 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/:name' element={<Details />} />
+        <Route path='/' element={<List />} />
+        <Route path='/:name' element={<Info />} />
       </Routes>
     </>
   )

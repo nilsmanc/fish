@@ -12,7 +12,6 @@ const columns: GridColDef[] = [
     width: 150,
   },
   { field: 'fat', headerName: 'Fat', width: 150 },
-
   {
     field: 'cholesterol',
     headerName: 'Cholesterol',

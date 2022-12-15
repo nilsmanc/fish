@@ -6,7 +6,7 @@ import Carousel from 'react-material-ui-carousel'
 
 import { fetchFish } from '../../redux/fish/asyncActions'
 import { selectFish } from '../../redux/fish/selectors'
-import { ImageType } from '../types'
+import { ImageType } from '../../components/types'
 
 import styles from './Info.module.scss'
 import { Paper } from '@mui/material'
@@ -87,7 +87,6 @@ export const Info: React.FC = () => {
 }
 
 export const Item = (props: any) => {
-  console.log(props)
   return (
     <Paper>
       <h2>{props.item.name}</h2>

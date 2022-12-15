@@ -4,19 +4,18 @@ import { useEffect, useState } from 'react'
 import { useAppDispatch } from '../../redux/store'
 
 import { fetchFish } from '../../redux/fish/asyncActions'
-import { Skeleton } from '../Skeleton/Skeleton'
-import { NutrionTable } from '../NutrionTable'
-import { Pagination } from '../Pagination'
+import { NutrionTable } from '../../components/NutrionTable'
+import { Pagination } from '../../components/Pagination'
 import { setCurrentPageNumber } from '../../redux/page/slice'
 import { selectPage } from '../../redux/page/selectors'
 import { isLoadingFish, selectFish } from '../../redux/fish/selectors'
 
-import styles from './Item.module.scss'
+import styles from './List.module.scss'
 import { Button } from '@mui/material'
-import { FishType } from '../types'
+import { FishType } from '../../components/types'
 import { ArrowForwardIos, ArrowBackIos } from '@mui/icons-material'
 
-export const Item: React.FC = () => {
+export const List: React.FC = () => {
   const data = useSelector(selectFish)
   const loading = useSelector(isLoadingFish)
 
@@ -35,7 +34,9 @@ export const Item: React.FC = () => {
   const nextPage = () => dispatch(setCurrentPageNumber(page + 1))
   const prevPage = () => dispatch(setCurrentPageNumber(page - 1))
 
-  const skeletons = [...new Array(3)].map((_, index) => <Skeleton key={index} />)
+  const skeletons = [...new Array(3)].map((_, index) => (
+    <div key={index} className={styles.skeleton} />
+  ))
 
   const getFish = () => {
     dispatch(fetchFish(''))

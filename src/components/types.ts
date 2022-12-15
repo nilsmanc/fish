@@ -5,21 +5,21 @@ export type ImageType = {
 }
 
 export type FishType = {
-  Biology: string
-  Calories: string
-  Cholesterol: string
+  ['Biology']: string
+  ['Calories']: string
+  ['Cholesterol']: string
   ['Fat, Total']: string
   ['Health Benefits']: string
   ['Image Gallery']: Array<{}>
-  Path: string
+  ['Path']: string
   ['Physical Description']: string
-  Protein: string
-  Quote: string
+  ['Protein']: string
+  ['Quote']: string
   ['Saturated Fatty Acids, Total']: string
   ['Scientific Name']: string
-  Sodium: string
+  ['Sodium']: string
   ['Species Illustration Photo']: { alt: string; src: string; title: string }
   ['Species Name']: string
-  Taste: string
-  Texture: string
+  ['Taste']: string
+  ['Texture']: string
 }

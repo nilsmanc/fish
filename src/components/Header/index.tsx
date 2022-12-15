@@ -9,6 +9,7 @@ export const Header: React.FC = () => {
   const handleOnClick = () => {
     navigate('/')
   }
+
   return (
     <div className={styles.wrapper}>
       <div onClick={handleOnClick}>
