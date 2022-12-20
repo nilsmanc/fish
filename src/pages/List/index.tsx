@@ -75,7 +75,12 @@ export const List: React.FC = () => {
           })}
       <div className={styles.paginator}>
         <div className={styles.pages}>
-          <Pagination fishPerPage={fishPerPage} totalFish={data.length} paginate={paginate} />
+          <Pagination
+            fishPerPage={fishPerPage}
+            totalFish={data.length}
+            paginate={paginate}
+            page={page}
+          />
         </div>
         <div className={styles.turn}>
           <Button
