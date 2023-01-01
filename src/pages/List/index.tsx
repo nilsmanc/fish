@@ -38,10 +38,6 @@ export const List: React.FC = () => {
     <div key={index} className={styles.skeleton} />
   ))
 
-  const getFish = () => {
-    dispatch(fetchFish(''))
-  }
-
   const onHandleClick = (item: FishType) => {
     navigate(`/${item['Path'].replace('/profiles/', '')}`)
 
@@ -49,12 +45,20 @@ export const List: React.FC = () => {
   }
 
   useEffect(() => {
-    getFish()
+    dispatch(fetchFish(''))
     dispatch(setCurrentPageNumber(page))
   }, [])
 
   return (
-    <div>
+    <>
+      {loading == 'error' && (
+        <div className={styles.error}>
+          <p>Error on the server side</p>
+          <Button variant='text' color='inherit' onClick={() => dispatch(fetchFish(''))}>
+            Retry
+          </Button>
+        </div>
+      )}
       {loading == 'loading'
         ? skeletons
         : currentFish.map((item: FishType) => {
@@ -96,6 +100,6 @@ export const List: React.FC = () => {
           </Button>
         </div>
       </div>
-    </div>
+    </>
   )
 }
